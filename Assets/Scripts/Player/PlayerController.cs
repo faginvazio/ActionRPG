@@ -11,6 +11,9 @@ namespace ActionRPGGame
 
         [SerializeField] private float moveSpeed = 8f;
 
+        [SerializeField] private float rotationSpeed = 720f;
+
+
         private void Awake()
         {
             if (refTransform == null)
@@ -34,6 +37,14 @@ namespace ActionRPGGame
             direction.Normalize();
 
             refTransform.position = refTransform.position + direction * moveSpeed * Time.deltaTime;
+
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+                refTransform.rotation = Quaternion.RotateTowards(refTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
         }
     }
 }
