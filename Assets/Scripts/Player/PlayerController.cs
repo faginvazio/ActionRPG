@@ -63,6 +63,11 @@ namespace ActionRPGGame
                 refAnimator.SetInteger("State", 1);
             }
         }
+
+        private void PlayStep()  // ?? For PlayStep Event of EllenRunForward ??
+        {
+
+        }
     }
 }
 
