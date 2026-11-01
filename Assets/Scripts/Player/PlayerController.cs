@@ -14,6 +14,9 @@ namespace ActionRPGGame
         [SerializeField] private float rotationSpeed = 720f;
 
 
+        [SerializeField] private Animator refAnimator;
+
+
         private void Awake()
         {
             if (refTransform == null)
@@ -24,6 +27,11 @@ namespace ActionRPGGame
             if (moveAction == null)
             {
                 moveAction = InputSystem.actions.FindAction("Move");
+            }
+
+            if (refAnimator == null)
+            {
+                refAnimator = GetComponentInChildren<Animator>();
             }
         }
 
@@ -44,6 +52,15 @@ namespace ActionRPGGame
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
 
                 refTransform.rotation = Quaternion.RotateTowards(refTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+
+            if (moveValue == Vector2.zero)
+            {
+                refAnimator.SetInteger("State", 0);
+            }
+            else
+            {
+                refAnimator.SetInteger("State", 1);
             }
         }
     }
