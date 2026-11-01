@@ -27,6 +27,18 @@ namespace ActionRPGGame
             SetState(State.Idle);
         }
 
+        private void Update()
+        {
+            if (InputManager.Movement == Vector2.zero)
+            {
+                SetState(State.Idle);
+            }
+            else
+            {
+                SetState(State.Move);
+            }
+        }
+
         public void SetState(State newState)
         {
             if (state == newState)

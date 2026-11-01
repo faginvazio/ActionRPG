@@ -12,6 +12,7 @@ namespace ActionRPGGame
         protected Animator refAnimator;
 
 
+
         protected virtual void OnEnable()
         {
             if (refTransform == null)
